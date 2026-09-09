@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { Award, BarChart3, Calendar, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Eye, FileText, Info, Mail, MapPin, MessageSquare, Phone, RotateCcw, Send, ShieldCheck, TrendingUp, Users, Vote } from "lucide-react";
+import { Award, BarChart3, Calendar, Check, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Eye, FileText, Info, Mail, MapPin, MessageSquare, Phone, RotateCcw, Send, ShieldCheck, TrendingUp, User, Users, Vote } from "lucide-react";
 import "./styles.css";
 import logoPucusana from "./assets/logo-pucusana.png";
 import bannerMaquinarias from "./assets/banner-maquinarias.png";
@@ -132,19 +132,122 @@ function BannerCarousel() {
   );
 }
 
+function PartyLogo({ code }) {
+  switch (code) {
+    case "RP":
+      return (
+        <div className="party-logo-badge logo-rp" title="Renovación Popular">
+          <span>R</span>
+        </div>
+      );
+    case "APP":
+      return (
+        <div className="party-logo-badge logo-app" title="Alianza para el Progreso">
+          <svg viewBox="0 0 36 36" width="36" height="36">
+            <circle cx="18" cy="18" r="16" fill="#ffffff" stroke="#dc2626" strokeWidth="2.5" />
+            <text x="18" y="24" textAnchor="middle" fill="#0284c7" fontWeight="900" fontSize="18" fontFamily="Arial, sans-serif">A</text>
+            <rect x="13" y="19" width="10" height="2.5" fill="#dc2626" />
+          </svg>
+        </div>
+      );
+    case "AP":
+      return (
+        <div className="party-logo-badge logo-ap" title="Avanza País">
+          <svg viewBox="0 0 46 32" width="44" height="30">
+            <path d="M4 18 L28 8 L40 18 Z" fill="#1e3a8a" />
+            <path d="M2 20 L44 20 L40 14 L8 14 Z" fill="#2563eb" />
+            <rect x="13" y="16" width="6" height="2" fill="#ffffff" />
+            <rect x="23" y="16" width="6" height="2" fill="#ffffff" />
+            <rect x="33" y="16" width="5" height="2" fill="#ffffff" />
+            <line x1="2" y1="22" x2="44" y2="22" stroke="#dc2626" strokeWidth="1.5" />
+            <text x="23" y="29.5" textAnchor="middle" fill="#1e3a8a" fontWeight="900" fontSize="5" fontFamily="Arial, sans-serif">AVANZA PAÍS</text>
+          </svg>
+        </div>
+      );
+    case "FP":
+      return (
+        <div className="party-logo-badge logo-fp" title="Fuerza Popular">
+          <svg viewBox="0 0 36 36" width="36" height="36">
+            <circle cx="18" cy="18" r="16" fill="#ea580c" />
+            <text x="18" y="25" textAnchor="middle" fill="#ffffff" fontWeight="900" fontSize="21" fontFamily="Arial Black, Impact, sans-serif">K</text>
+          </svg>
+        </div>
+      );
+    case "SP":
+      return (
+        <div className="party-logo-badge logo-sp" title="Somos Perú">
+          <svg viewBox="0 0 36 34" width="36" height="33">
+            <path d="M18 31 C8 23 2 16 2 9 A7 7 0 0 1 14 4 C15.5 5.5 17 7.5 18 9 C19 7.5 20.5 5.5 22 4 A7 7 0 0 1 34 9 C34 16 28 23 18 31 Z" fill="#dc2626" />
+            <rect x="7" y="11" width="22" height="9" rx="3" fill="#ffffff" />
+            <text x="18" y="15" textAnchor="middle" fill="#1e3a8a" fontWeight="900" fontSize="4.2" fontFamily="Arial, sans-serif">SOMOS</text>
+            <text x="18" y="18.5" textAnchor="middle" fill="#dc2626" fontWeight="900" fontSize="4" fontFamily="Arial, sans-serif">PERÚ</text>
+          </svg>
+        </div>
+      );
+    case "FE":
+      return (
+        <div className="party-logo-badge logo-fe" title="Frente de la Esperanza">
+          <svg viewBox="0 0 34 34" width="34" height="34">
+            <rect x="2" y="2" width="30" height="30" rx="6" fill="#16a34a" />
+            <line x1="17" y1="6" x2="17" y2="15" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M11 16 L23 16 L25 27 L9 27 Z" fill="#ffffff" />
+            <line x1="12" y1="20" x2="22" y2="20" stroke="#16a34a" strokeWidth="1" />
+            <line x1="11" y1="27" x2="11" y2="25" stroke="#16a34a" strokeWidth="1" />
+            <line x1="14" y1="27" x2="14" y2="25" stroke="#16a34a" strokeWidth="1" />
+            <line x1="17" y1="27" x2="17" y2="25" stroke="#16a34a" strokeWidth="1" />
+            <line x1="20" y1="27" x2="20" y2="25" stroke="#16a34a" strokeWidth="1" />
+            <line x1="23" y1="27" x2="23" y2="25" stroke="#16a34a" strokeWidth="1" />
+          </svg>
+        </div>
+      );
+    case "PP":
+      return (
+        <div className="party-logo-badge logo-pp" title="Perú Primero">
+          <svg viewBox="0 0 34 34" width="34" height="34">
+            <rect x="2" y="2" width="30" height="30" rx="6" fill="#dc2626" />
+            <path d="M14 11 L18 8 L18 25 L14 25" stroke="#ffffff" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <line x1="12" y1="25" x2="23" y2="25" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+            <text x="18" y="21" textAnchor="middle" fill="#dc2626" fontWeight="900" fontSize="12" fontFamily="Arial, sans-serif">1</text>
+          </svg>
+        </div>
+      );
+    case "PRIN":
+      return (
+        <div className="party-logo-badge logo-prin" title="PRIN">
+          <svg viewBox="0 0 36 36" width="36" height="36">
+            <circle cx="18" cy="18" r="16" fill="#dc2626" stroke="#b91c1c" strokeWidth="1.5" />
+            <circle cx="18" cy="18" r="13.5" fill="none" stroke="#ffffff" strokeWidth="1.2" />
+            <text x="18" y="22" textAnchor="middle" fill="#ffffff" fontWeight="900" fontSize="8.5" fontFamily="Arial Black, Impact, sans-serif" letterSpacing="0.5">PRIN</text>
+          </svg>
+        </div>
+      );
+    case "OTRO":
+    default:
+      return (
+        <div className="party-logo-badge logo-otro" title="Otro / Voto en blanco">
+          <svg viewBox="0 0 36 36" width="34" height="34">
+            <circle cx="18" cy="18" r="13" fill="none" stroke="#0f172a" strokeWidth="3.2" />
+            <line x1="9" y1="27" x2="27" y2="9" stroke="#0f172a" strokeWidth="3.2" />
+          </svg>
+        </div>
+      );
+  }
+}
+
 const INITIAL_CANDIDATES = [
-  { id: 1, name: "Rocio Del Pilar Del Valle Morales", party: "Partido Político Prin", votes: 118, color: "#159fe8", logo: "PRIN" },
-  { id: 2, name: "Pedro Pablo Florian Huari", party: "Alianza Para El Progreso", votes: 32, color: "#51bf61", logo: "A" },
-  { id: 3, name: "Cecilia Acosta Cajaleon", party: "Renovación Popular Perú", votes: 21, color: "#ef426f", logo: "R" },
-  { id: 4, name: "Sandra Paola Chanchaya Espinoza", party: "Partido Político Perú Primero", votes: 10, color: "#f2bd12", logo: "1" },
-  { id: 5, name: "Jhonel Jorge Leguia Jamis", party: "Partido Democrático Somos Perú", votes: 8, color: "#9a62c8", logo: "SP" },
-  { id: 6, name: "Jose Luis Casas Carrion", party: "Avanza País - Partido de Integración", votes: 5, color: "#24b979", logo: "AP" },
-  { id: 7, name: "Luis Martin Koc Lem Moya", party: "Fuerza Popular", votes: 4, color: "#f04465", logo: "K" },
-  { id: 8, name: "Fabiola Lucero Silva Montero", party: "Partido Frente De La Esperanza 2021", votes: 1, color: "#52a96a", logo: "F" }
+  { id: 1, name: "OSWALDO AMERICO SALAZAR QUISPE", party: "Renovación Popular", votes: 46, color: "#0284c7", partyCode: "RP", logo: "RP" },
+  { id: 2, name: "PEDRO PABLO FLORIAN HUARI", party: "Alianza para el Progreso (APP)", votes: 52, color: "#e11d48", partyCode: "APP", logo: "APP" },
+  { id: 3, name: "JHONNY EDGARDO CALAGUA HUAMBACHANO", party: "Avanza País - Partido de Integración Social", votes: 36, color: "#2563eb", partyCode: "AP", logo: "AP" },
+  { id: 4, name: "LUIS MARTIN KOC LEM MOYA", party: "Fuerza Popular", votes: 24, color: "#ea580c", partyCode: "FP", logo: "FP" },
+  { id: 5, name: "EDWIN FREDDY CUYA ESPINOZA", party: "Partido Democrático Somos Perú", votes: 58, color: "#dc2626", partyCode: "SP", logo: "SP" },
+  { id: 6, name: "ENRIQUE JULIO MANCO SUNI", party: "Frente de la Esperanza", votes: 18, color: "#16a34a", partyCode: "FE", logo: "FE" },
+  { id: 7, name: "SANDRA PAOLA CANCHANYA ESPINOZA", party: "Perú Primero", votes: 29, color: "#b91c1c", partyCode: "PP", logo: "PP" },
+  { id: 8, name: "OTRO", party: "Voto en blanco / Otro candidato", votes: 11, color: "#475569", partyCode: "OTRO", logo: "OTRO" },
+  { id: 9, name: "Rocío del Pilar del Valle Morales", party: "PRIN (Partido Regionalista de Integración Nacional)", votes: 98, color: "#dc2626", partyCode: "PRIN", logo: "PRIN" }
 ];
 
-const STORAGE_KEY = "pucusana-encuesta-2026";
-const VOTED_KEY = "pucusana-encuesta-voted";
+const STORAGE_KEY = "pucusana-encuesta-2026-v3";
+const VOTED_KEY = "pucusana-encuesta-voted-v3";
 
 function loadCandidates() {
   try {
@@ -161,6 +264,13 @@ function App() {
   const [hasVoted, setHasVoted] = useState(() => localStorage.getItem(VOTED_KEY) === "true");
   const [view, setView] = useState("poll");
   const [message, setMessage] = useState("");
+  const [captcha, setCaptcha] = useState(() => {
+    const a = Math.floor(Math.random() * 7) + 3;
+    const b = Math.floor(Math.random() * 6) + 1;
+    return { a, b, answer: a + b };
+  });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState("");
   const [comments, setComments] = useState(() => {
     try {
       const saved = localStorage.getItem(COMMENTS_KEY);
@@ -202,6 +312,11 @@ function App() {
 
   const vote = () => {
     if (!selected || hasVoted) return;
+    if (parseInt(captchaInput, 10) !== captcha.answer) {
+      setCaptchaError(`Por favor resuelve correctamente la operación: ${captcha.a} + ${captcha.b} = ?`);
+      return;
+    }
+    setCaptchaError("");
     setCandidates(current =>
       current.map(candidate =>
         candidate.id === selected ? { ...candidate, votes: candidate.votes + 1 } : candidate
@@ -219,6 +334,11 @@ function App() {
     setCandidates(INITIAL_CANDIDATES);
     setHasVoted(false);
     setSelected(null);
+    setCaptchaInput("");
+    setCaptchaError("");
+    const a = Math.floor(Math.random() * 7) + 3;
+    const b = Math.floor(Math.random() * 6) + 1;
+    setCaptcha({ a, b, answer: a + b });
     setMessage("La encuesta de demostración fue reiniciada.");
     setView("poll");
   };
@@ -342,43 +462,106 @@ function App() {
         {message && <div className="success"><CheckCircle2 size={19}/>{message}</div>}
 
         {view === "poll" ? (
-          <section>
+          <section className="ballot-section">
             {hasVoted && (
               <div className="already">
                 <ShieldCheck size={19}/>
-                Ya registraste un voto en este navegador. Puedes consultar los resultados.
+                Ya registraste tu participación en este navegador. Puedes consultar los resultados actuales.
               </div>
             )}
 
-            <div className="candidate-list">
-              {ranked.map((candidate, index) => {
-                const percent = totalVotes ? (candidate.votes / totalVotes) * 100 : 0;
+            <div className="ballot-title-row">
+              <span className="ballot-title-icon">🗳️</span>
+              <h2 className="ballot-title-text">Selecciona tu candidato</h2>
+            </div>
+
+            <div className="ballot-list">
+              {candidates.map((candidate) => {
                 const isSelected = selected === candidate.id;
                 return (
                   <article
                     key={candidate.id}
-                    className={`candidate ${isSelected ? "selected" : ""} ${hasVoted ? "disabled" : ""}`}
+                    className={`ballot-card ${isSelected ? "selected" : ""} ${hasVoted ? "disabled" : ""}`}
                     onClick={() => !hasVoted && setSelected(candidate.id)}
                   >
-                    <div className="rank">{index + 1}</div>
-                    <div className="avatar">{candidate.logo}</div>
-                    <div className="candidate-info">
-                      <div className="candidate-name">{candidate.name}</div>
-                      <div className="party">{candidate.party}</div>
-                      <div className="progress"><span style={{ width: `${Math.max(percent, 1)}%`, background: candidate.color }} /></div>
+                    <div className="ballot-avatar-col">
+                      <div className="ballot-avatar-circle">
+                        <User size={24} />
+                      </div>
                     </div>
-                    <div className="stats">
-                      <strong>{percent.toFixed(1)}%</strong>
-                      <span>{candidate.votes} votos</span>
+
+                    <div className="ballot-info-col">
+                      <strong className="ballot-candidate-name">{candidate.name}</strong>
+                      <span className="ballot-party-name">{candidate.party}</span>
+                    </div>
+
+                    <div className="ballot-logo-col">
+                      <PartyLogo code={candidate.partyCode} />
+                    </div>
+
+                    <div className="ballot-radio-col">
+                      <div className={`ballot-radio-btn ${isSelected ? "checked" : ""}`}>
+                        {isSelected && <div className="ballot-radio-dot" />}
+                      </div>
                     </div>
                   </article>
                 );
               })}
             </div>
 
-            <button className="vote-button" disabled={!selected || hasVoted} onClick={vote}>
-              {hasVoted ? "Voto ya registrado" : selected ? "Confirmar mi voto" : "Selecciona un candidato"}
+            {!hasVoted && (
+              <div className="ballot-captcha-box">
+                <div className="captcha-equation-badge">
+                  <span>{captcha.a}</span>
+                  <span>+</span>
+                  <span>{captcha.b}</span>
+                  <span>=</span>
+                  <span>?</span>
+                </div>
+                <div className="captcha-field-group">
+                  <label htmlFor="captcha-input-field">Escribe el resultado:</label>
+                  <input
+                    id="captcha-input-field"
+                    type="number"
+                    placeholder="?"
+                    className="captcha-input-field"
+                    value={captchaInput}
+                    onChange={(e) => {
+                      setCaptchaInput(e.target.value);
+                      setCaptchaError("");
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {captchaError && (
+              <div className="captcha-error-alert">
+                {captchaError}
+              </div>
+            )}
+
+            <button
+              type="button"
+              className="ballot-submit-btn"
+              disabled={!selected || hasVoted}
+              onClick={vote}
+            >
+              <span className="btn-box-icon">🗳️</span>
+              <span>{hasVoted ? "Participación ya registrada" : "Emitir mi Participación"}</span>
             </button>
+
+            <div className="ballot-footer-link">
+              <a
+                href="#ficha-tecnica"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector(".sheet-card")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                📌 Ficha Técnica y Metodología
+              </a>
+            </div>
           </section>
         ) : (
           <section className="results">
