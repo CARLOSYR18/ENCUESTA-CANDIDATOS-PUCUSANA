@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { Award, BarChart3, Calendar, CheckCircle2, ChevronLeft, ChevronRight, Eye, FileText, Info, MapPin, MessageSquare, RotateCcw, Send, ShieldCheck, TrendingUp, Users, Vote } from "lucide-react";
+import { Award, BarChart3, Calendar, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Eye, FileText, Info, Mail, MapPin, MessageSquare, Phone, RotateCcw, Send, ShieldCheck, TrendingUp, Users, Vote } from "lucide-react";
 import "./styles.css";
 import logoPucusana from "./assets/logo-pucusana.png";
 import bannerMaquinarias from "./assets/banner-maquinarias.png";
@@ -591,11 +591,123 @@ function App() {
           </article>
         </section>
 
-        <footer>
-          <span>Proyecto demo · Pucusana 2026</span>
-          <button onClick={resetDemo}><RotateCcw size={14}/> Reiniciar demo</button>
-        </footer>
       </main>
+
+      {/* ========================================================================= */}
+      {/* FOOTER INSTITUCIONAL CON ESCUDO DE PUCUSANA                                */}
+      {/* ========================================================================= */}
+      <footer className="main-footer">
+        <div className="footer-container">
+          <div className="footer-grid">
+            {/* Columna 1: Identidad Institucional */}
+            <div className="footer-brand-col">
+              <div className="footer-brand-header">
+                <div className="footer-logo-wrap">
+                  <img
+                    src={logoPucusana}
+                    alt="Escudo Municipalidad Distrital de Pucusana"
+                    className="footer-logo-img"
+                  />
+                </div>
+                <div className="footer-brand-text">
+                  <span className="footer-tag">PORTAL CIUDADANO</span>
+                  <strong className="footer-title">Municipalidad Distrital de Pucusana</strong>
+                  <span className="footer-subtitle">Distrito Turístico y Pesquero · Elecciones 2026</span>
+                </div>
+              </div>
+              <p className="footer-desc">
+                Plataforma cívica e informativa de sondeo ciudadano para el seguimiento estadístico y participativo de las Elecciones Municipales de Pucusana 2026.
+              </p>
+              <div className="footer-badges">
+                <span className="footer-badge"><ShieldCheck size={14} /> Sondeo Seguro</span>
+                <span className="footer-badge"><Users size={14} /> Participación Vecinal</span>
+              </div>
+            </div>
+
+            {/* Columna 2: Navegación del Sondeo */}
+            <div className="footer-col">
+              <h4 className="footer-heading">Navegación</h4>
+              <ul className="footer-links">
+                <li>
+                  <button type="button" onClick={() => { setView("poll"); window.scrollTo({ top: 460, behavior: "smooth" }); }}>
+                    Emitir Voto Ciudadano
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onClick={() => { setView("results"); window.scrollTo({ top: 460, behavior: "smooth" }); }}>
+                    Resultados en Tiempo Real
+                  </button>
+                </li>
+                <li>
+                  <a href="#inicio" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                    Inicio y Banners
+                  </a>
+                </li>
+                <li>
+                  <button type="button" onClick={resetDemo} className="footer-reset-btn">
+                    <RotateCcw size={13} /> Reiniciar encuesta demo
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Columna 3: Enlaces de Interés Electoral */}
+            <div className="footer-col">
+              <h4 className="footer-heading">Enlaces de Interés</h4>
+              <ul className="footer-links">
+                <li>
+                  <a href="https://www.gob.pe/munipucusana" target="_blank" rel="noopener noreferrer">
+                    Portal Municipalidad Pucusana <ExternalLink size={12} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://portal.jne.gob.pe/" target="_blank" rel="noopener noreferrer">
+                    Jurado Nacional de Elecciones (JNE) <ExternalLink size={12} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.onpe.gob.pe/" target="_blank" rel="noopener noreferrer">
+                    ONPE - Procesos Electorales <ExternalLink size={12} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://votoinformado.jne.gob.pe/" target="_blank" rel="noopener noreferrer">
+                    Voto Informado JNE <ExternalLink size={12} />
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Columna 4: Ubicación y Contacto */}
+            <div className="footer-col">
+              <h4 className="footer-heading">Distrito de Pucusana</h4>
+              <ul className="footer-contact-list">
+                <li>
+                  <MapPin size={16} className="contact-icon" />
+                  <span>Av. Lima s/n - Malecón San Martín, Pucusana, Lima, Perú</span>
+                </li>
+                <li>
+                  <Phone size={15} className="contact-icon" />
+                  <span>Central Telefónica: (01) 430-9111</span>
+                </li>
+                <li>
+                  <Mail size={15} className="contact-icon" />
+                  <span>contacto@pucusana.gob.pe</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom-bar">
+            <div className="footer-copyright">
+              © 2026 <strong>Sondeo Pucusana 2026 · Pulso Municipal</strong>. Todos los derechos reservados.
+            </div>
+            <div className="footer-legal">
+              Encuesta informativa no vinculante electoralmente. Elaborada con fines democráticos e ilustrativos.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
