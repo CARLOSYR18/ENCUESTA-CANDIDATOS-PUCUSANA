@@ -1,12 +1,34 @@
-* { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #172033;
   background: #f5f7fb;
 }
-body { margin: 0; min-width: 320px; }
+html {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-width: 320px;
+  background: #f5f7fb;
+  -webkit-font-smoothing: antialiased;
+}
 button { font: inherit; }
-.app { min-height: 100vh; }
+.app {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
 /* Navigation Bar Electoral */
 .main-navbar {
@@ -737,7 +759,7 @@ h2 { margin:0; color:#173f72; font-size:25px; }
 
 .crumb-current {
   color: #94a3b8;
-  max-width: 580px;
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1401,7 +1423,19 @@ h2 { margin:0; color:#173f72; font-size:25px; }
 }
 
 @media (max-width: 680px) {
-  .container { width:min(100% - 18px, 960px); margin-top:14px; }
+  html, body, .app {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+    max-width: 100%;
+    margin: 14px auto 36px;
+    padding: 0;
+  }
+
   .navbar-inner {
     padding: 8px 12px 9px;
     position: relative;
@@ -1409,11 +1443,17 @@ h2 { margin:0; color:#173f72; font-size:25px; }
     align-items: stretch;
     min-height: auto;
     gap: 8px;
+    width: 100%;
+    max-width: 100%;
   }
+
   .nav-brand {
     gap: 9px;
-    padding-right: 75px; /* space for EN VIVO badge */
+    padding-right: 75px; /* espacio para el badge EN VIVO */
+    min-width: 0;
+    flex: 1;
   }
+
   .nav-logo-wrap {
     width: 36px;
     height: 36px;
@@ -1421,17 +1461,22 @@ h2 { margin:0; color:#173f72; font-size:25px; }
     padding: 2px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
   }
+
   .nav-brand-text {
     flex: 1;
     min-width: 0;
+    overflow: hidden;
   }
+
   .nav-brand-tag {
     font-size: 8.5px;
     letter-spacing: 0.09em;
     margin-bottom: 1px;
     line-height: 1;
   }
+
   .nav-brand-title {
     font-size: 13.5px;
     font-weight: 800;
@@ -1440,6 +1485,7 @@ h2 { margin:0; color:#173f72; font-size:25px; }
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .nav-brand-subtitle { display: none; }
   
   .nav-right-group {
@@ -1448,12 +1494,14 @@ h2 { margin:0; color:#173f72; font-size:25px; }
     right: 12px;
     margin: 0;
   }
+
   .nav-live {
     padding: 3px 8px;
     font-size: 9.5px;
     gap: 5px;
     border-radius: 12px;
   }
+
   .nav-live-dot {
     width: 6px;
     height: 6px;
@@ -1470,10 +1518,11 @@ h2 { margin:0; color:#173f72; font-size:25px; }
     border-radius: 10px;
     gap: 3px;
   }
+
   .nav-link-btn {
     border: 0;
     background: transparent;
-    padding: 6px 10px;
+    padding: 7px 8px;
     font-size: 11.5px;
     font-weight: 700;
     border-radius: 7px;
@@ -1483,43 +1532,412 @@ h2 { margin:0; color:#173f72; font-size:25px; }
     box-shadow: none;
     transform: none !important;
   }
+
   .nav-link-btn.active {
     background: #0284c7;
     color: #ffffff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   }
+
   .nav-link-btn:hover:not(.active) {
     background: rgba(255, 255, 255, 0.06);
     color: #ffffff;
   }
-  .carousel-img { max-height: 250px; }
-  .carousel-arrow { width: 34px; height: 34px; }
-  .carousel-arrow.prev { left: 8px; }
-  .carousel-arrow.next { right: 8px; }
-  .carousel-counter { top: 10px; right: 10px; padding: 3px 8px; }
-  .carousel-counter span { font-size: 13px; }
-  .carousel-dots { bottom: 8px; padding: 4px 8px; gap: 6px; }
-  .carousel-dot { width: 7px; height: 7px; }
-  .carousel-dot.active { width: 18px; }
-  .title-card { padding:19px; flex-direction:column; align-items:flex-start; }
-  .total-box { width:100%; }
-  .candidate { grid-template-columns:29px 45px 1fr 66px; gap:8px; padding-right:8px; }
-  .avatar { width:43px; height:43px; }
-  .candidate-name { font-size:12px; }
-  .party { font-size:10px; }
-  .stats strong { font-size:15px; }
-  .winner { grid-template-columns:1fr auto; }
-  .winner-label { grid-column:1 / -1; }
-  .form-inputs-row { grid-template-columns: 1fr; }
-  .sheet-grid { grid-template-columns: 1fr; }
-  .pillars-grid { grid-template-columns: 1fr; }
-  .editorial-card { padding: 18px 16px; border-radius: 14px; }
-  .news-title { font-size: 19px; }
-  .editorial-heading { font-size: 18px; }
-  .candidates-overview-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .footer-container { padding: 36px 16px 24px; }
-  .footer-bottom-bar { flex-direction: column; text-align: center; gap: 10px; }
-  .footer-brand-header { gap: 12px; }
-  .footer-logo-wrap { width: 44px; height: 44px; border-radius: 10px; }
+
+  /* Carrusel en móvil */
+  .hero-banner-carousel {
+    max-width: 100vw;
+    overflow: hidden;
+  }
+  .carousel-img { max-height: 220px; }
+  .carousel-arrow { width: 32px; height: 32px; }
+  .carousel-arrow.prev { left: 6px; }
+  .carousel-arrow.next { right: 6px; }
+  .carousel-counter { top: 8px; right: 8px; padding: 2px 7px; }
+  .carousel-counter span { font-size: 12px; }
+  .carousel-dots { bottom: 6px; padding: 3px 6px; gap: 5px; }
+  .carousel-dot { width: 6px; height: 6px; }
+  .carousel-dot.active { width: 16px; }
+
+  /* Encabezado Editorial de Noticias */
+  .news-post-header {
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .news-breadcrumbs {
+    font-size: 11px;
+    gap: 4px;
+    margin-bottom: 8px;
+    word-break: break-word;
+  }
+  .crumb-current {
+    white-space: normal;
+    word-break: break-word;
+    display: inline;
+    max-width: 100%;
+  }
+  .news-title {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .news-meta-row {
+    font-size: 11.5px;
+    gap: 6px 10px;
+    padding-bottom: 12px;
+  }
+
+  /* Encabezado de sondeo */
+  .title-card {
+    padding: 16px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .total-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Cédula de Votación en móvil */
+  .ballot-title-row {
+    gap: 8px;
+    margin: 14px 0 12px;
+  }
+  .ballot-title-icon {
+    font-size: 18px;
+  }
+  .ballot-title-text {
+    font-size: 17px;
+  }
+  .ballot-list {
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .ballot-card {
+    padding: 10px 12px;
+    gap: 10px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .ballot-avatar-circle {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .ballot-avatar-circle svg {
+    width: 20px;
+    height: 20px;
+  }
+  .ballot-info-col {
+    min-width: 0;
+    flex: 1;
+  }
+  .ballot-candidate-name {
+    font-size: 12px;
+    line-height: 1.22;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .ballot-party-name {
+    font-size: 10.5px;
+    line-height: 1.25;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .ballot-logo-col {
+    min-width: 34px;
+    max-width: 38px;
+    flex-shrink: 0;
+  }
+  .logo-rp {
+    width: 30px;
+    height: 30px;
+    font-size: 19px;
+  }
+  .party-logo-badge svg {
+    max-width: 34px;
+    height: auto;
+  }
+  .ballot-radio-col {
+    flex-shrink: 0;
+  }
+  .ballot-radio-btn {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+  }
+  .ballot-radio-dot {
+    width: 13px;
+    height: 13px;
+  }
+  .ballot-submit-btn {
+    padding: 13px 18px;
+    font-size: 14.5px;
+    border-radius: 12px;
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  /* Resultados */
+  .results {
+    padding: 16px 14px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .results-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .winner {
+    grid-template-columns: 1fr auto;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .winner-label {
+    grid-column: 1 / -1;
+  }
+  .winner h3 {
+    font-size: 14px;
+    word-break: break-word;
+  }
+  .winner > b {
+    font-size: 20px;
+  }
+  .bar-label {
+    font-size: 11.5px;
+    gap: 8px;
+  }
+
+  /* Secciones Editoriales Post-Encuesta */
+  .editorial-content-section {
+    margin-top: 24px;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .editorial-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .editorial-heading {
+    font-size: 17px;
+    line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .editorial-lead {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .editorial-text {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ficha Técnica Grid */
+  .sheet-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .sheet-box {
+    padding: 11px 13px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .sheet-box strong {
+    font-size: 12.5px;
+    line-height: 1.35;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Pilares Grid */
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .pillar-item {
+    padding: 14px 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .pillar-item h3 {
+    font-size: 14px;
+    word-break: break-word;
+  }
+  .pillar-item p {
+    font-size: 12px;
+    line-height: 1.45;
+    word-break: break-word;
+  }
+
+  /* Tarjetas Resumen Candidatos */
+  .candidates-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .candidate-overview-card {
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .cand-main-data h4 {
+    font-size: 12.5px;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .cand-party-name {
+    font-size: 10.5px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Foro y comentarios */
+  .comment-form-box {
+    padding: 14px 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .form-inputs-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .comment-form-box input,
+  .comment-form-box textarea {
+    width: 100%;
+    max-width: 100%;
+    font-size: 13px;
+    box-sizing: border-box;
+  }
+  .comment-item {
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .comment-body {
+    font-size: 12.5px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Footer en móvil */
+  .main-footer {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .footer-container {
+    width: calc(100% - 24px);
+    max-width: 100%;
+    padding: 32px 0 20px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .footer-brand-header {
+    gap: 10px;
+  }
+  .footer-logo-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+  }
+  .footer-brand-title {
+    font-size: 15px;
+  }
+  .footer-description {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding-top: 18px;
+    font-size: 11px;
+  }
+}
+
+/* Teléfonos muy compactos (<= 380px) */
+@media (max-width: 380px) {
+  .container {
+    width: calc(100% - 16px);
+  }
+  .navbar-inner {
+    padding: 6px 10px 8px;
+  }
+  .nav-brand-title {
+    font-size: 12px;
+  }
+  .ballot-card {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .ballot-avatar-circle {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+  .ballot-avatar-circle svg {
+    width: 17px;
+    height: 17px;
+  }
+  .ballot-candidate-name {
+    font-size: 11.5px;
+  }
+  .ballot-party-name {
+    font-size: 10px;
+  }
+  .ballot-radio-btn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+  .ballot-radio-dot {
+    width: 11px;
+    height: 11px;
+  }
 }

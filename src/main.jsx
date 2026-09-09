@@ -264,13 +264,6 @@ function App() {
   const [hasVoted, setHasVoted] = useState(() => localStorage.getItem(VOTED_KEY) === "true");
   const [view, setView] = useState("poll");
   const [message, setMessage] = useState("");
-  const [captcha, setCaptcha] = useState(() => {
-    const a = Math.floor(Math.random() * 7) + 3;
-    const b = Math.floor(Math.random() * 6) + 1;
-    return { a, b, answer: a + b };
-  });
-  const [captchaInput, setCaptchaInput] = useState("");
-  const [captchaError, setCaptchaError] = useState("");
   const [comments, setComments] = useState(() => {
     try {
       const saved = localStorage.getItem(COMMENTS_KEY);
@@ -312,11 +305,6 @@ function App() {
 
   const vote = () => {
     if (!selected || hasVoted) return;
-    if (parseInt(captchaInput, 10) !== captcha.answer) {
-      setCaptchaError(`Por favor resuelve correctamente la operación: ${captcha.a} + ${captcha.b} = ?`);
-      return;
-    }
-    setCaptchaError("");
     setCandidates(current =>
       current.map(candidate =>
         candidate.id === selected ? { ...candidate, votes: candidate.votes + 1 } : candidate
@@ -334,11 +322,6 @@ function App() {
     setCandidates(INITIAL_CANDIDATES);
     setHasVoted(false);
     setSelected(null);
-    setCaptchaInput("");
-    setCaptchaError("");
-    const a = Math.floor(Math.random() * 7) + 3;
-    const b = Math.floor(Math.random() * 6) + 1;
-    setCaptcha({ a, b, answer: a + b });
     setMessage("La encuesta de demostración fue reiniciada.");
     setView("poll");
   };
@@ -508,38 +491,6 @@ function App() {
                 );
               })}
             </div>
-
-            {!hasVoted && (
-              <div className="ballot-captcha-box">
-                <div className="captcha-equation-badge">
-                  <span>{captcha.a}</span>
-                  <span>+</span>
-                  <span>{captcha.b}</span>
-                  <span>=</span>
-                  <span>?</span>
-                </div>
-                <div className="captcha-field-group">
-                  <label htmlFor="captcha-input-field">Escribe el resultado:</label>
-                  <input
-                    id="captcha-input-field"
-                    type="number"
-                    placeholder="?"
-                    className="captcha-input-field"
-                    value={captchaInput}
-                    onChange={(e) => {
-                      setCaptchaInput(e.target.value);
-                      setCaptchaError("");
-                    }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {captchaError && (
-              <div className="captcha-error-alert">
-                {captchaError}
-              </div>
-            )}
 
             <button
               type="button"
